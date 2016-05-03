@@ -1,5 +1,6 @@
 package android.example.com.cinema;
 
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -43,13 +44,13 @@ public class MainActivityFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.moviesfragment,menu);
+        inflater.inflate(R.menu.moviesfragment, menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if(id == R.id.action_refresh){
+        if (id == R.id.action_refresh) {
             FetchMoviesData moviesData = new FetchMoviesData();
             moviesData.execute();
             return true;
@@ -60,10 +61,10 @@ public class MainActivityFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        String data[] = {"lololololo", "bolololoolo","mdadada","bnenenenanean"};
-        List<String> movies = new ArrayList<String>(Arrays.asList(data));
-        ArrayAdapter<String> moviesAdapter = new ArrayAdapter<String>(getActivity(),R.layout.list_item_movies,R.id.list_item_movies_textview,movies);
-        View rootView =  inflater.inflate(R.layout.fragment_main, container, false);
+        String data[] = {"lololololo", "bolololoolo", "mdadada", "bnenenenanean"};
+        List<String> movies = new ArrayList<>(Arrays.asList(data));
+        ArrayAdapter<String> moviesAdapter = new ArrayAdapter<>(getActivity(), R.layout.list_item_movies, R.id.list_item_movies_textview, movies);
+        View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
         GridView gridView = (GridView) rootView.findViewById(R.id.gridview_movies);
 
@@ -72,7 +73,7 @@ public class MainActivityFragment extends Fragment {
         return rootView;
     }
 
-    public class FetchMoviesData extends AsyncTask<Void,Void,Void>{
+    public class FetchMoviesData extends AsyncTask<Void, Void, Void> {
 
         private final String LOG_TAG = FetchMoviesData.class.getSimpleName();
 
@@ -85,13 +86,29 @@ public class MainActivityFragment extends Fragment {
             BufferedReader reader = null;
 
             // Will contain the raw JSON response as a string.
-            String forecastJsonStr = null;
+            String moviesJsonStr;
+
+            String sortByPopularityDesc = "popularity.desc";
+            String sortByTopRated = "vote_average.desc";
+
 
             try {
                 // Construct the URL for the moviedb query
                 // Possible parameters are avaiable at themoviedb API page, at
                 // http://docs.themoviedb.apiary.io/#
-                URL url = new URL("http://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&");
+
+                final String MOVIES_BASE_URL = "http://api.themoviedb.org/3/discover/movie?";
+                final String SORT_BY_PARAM = "sort_by";
+                final String API_KEY_PARAM = "api_key";
+
+                Uri builtUri = Uri.parse(MOVIES_BASE_URL).buildUpon()
+                        .appendQueryParameter(SORT_BY_PARAM, sortByPopularityDesc)
+                        .appendQueryParameter(API_KEY_PARAM, BuildConfig.THE_MOVIE_DB_API_KEY)
+                        .build();
+
+                URL url = new URL(builtUri.toString());
+
+                Log.v(LOG_TAG, "Built URI " + builtUri.toString());
 
                 // Create the request to themovieadb, and open the connection
                 urlConnection = (HttpURLConnection) url.openConnection();
@@ -100,7 +117,7 @@ public class MainActivityFragment extends Fragment {
 
                 // Read the input stream into a String
                 InputStream inputStream = urlConnection.getInputStream();
-                StringBuffer buffer = new StringBuffer();
+                StringBuilder builder = new StringBuilder();
                 if (inputStream == null) {
                     // Nothing to do.
                     return null;
@@ -112,24 +129,23 @@ public class MainActivityFragment extends Fragment {
                     // Since it's JSON, adding a newline isn't necessary (it won't affect parsing)
                     // But it does make debugging a *lot* easier if you print out the completed
                     // buffer for debugging.
-                    buffer.append(line + "\n");
+                    builder.append(line).append("\n");
                 }
 
-                if (buffer.length() == 0) {
+                if (builder.length() == 0) {
                     // Stream was empty.  No point in parsing.
                     return null;
                 }
-                forecastJsonStr = buffer.toString();
+                moviesJsonStr = builder.toString();
 
-                Log.v(LOG_TAG, "JSON STRING" + forecastJsonStr);
+                Log.v(LOG_TAG, "JSON STRING" + moviesJsonStr);
 
             } catch (IOException e) {
                 Log.e("PlaceholderFragment", "Error ", e);
                 // If the code didn't successfully get the movies data, there's no point in attemping
                 // to parse it.
                 return null;
-            }
-            finally {
+            } finally {
                 if (urlConnection != null) {
                     urlConnection.disconnect();
                 }
