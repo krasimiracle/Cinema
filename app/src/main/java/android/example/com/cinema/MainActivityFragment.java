@@ -12,8 +12,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.GridView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,14 +25,32 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * A placeholder fragment containing a simple view.
  */
 public class MainActivityFragment extends Fragment {
 
+   private MoviesAdapter moviesAdapter;
+    public ArrayList<String> posterImages;
+
+
+   public static ArrayList<String> eatFoodyImages = new ArrayList<String>(){{
+          add("http://i.imgur.com/rFLNqWI.jpg");
+          add("http://i.imgur.com/C9pBVt7.jpg");
+          add("http://i.imgur.com/rT5vXE1.jpg");
+          add("http://i.imgur.com/aIy5R2k.jpg");
+          add("http://i.imgur.com/MoJs9pT.jpg");
+          add("http://i.imgur.com/S963yEM.jpg");
+          add("http://i.imgur.com/rLR2cyc.jpg");
+          add("http://i.imgur.com/SEPdUIx.jpg");
+          add("http://i.imgur.com/aC9OjaM.jpg");
+          add("http://i.imgur.com/76Jfv9b.jpg");
+          add("http://i.imgur.com/fUX7EIB.jpg");
+          add("http://i.imgur.com/syELajx.jpg");
+          add("http://i.imgur.com/COzBnru.jpg");
+          add("http://i.imgur.com/Z3QjilA.jpg");
+   }};
 
     public MainActivityFragment() {
     }
@@ -61,9 +82,9 @@ public class MainActivityFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        String data[] = {"lololololo", "bolololoolo", "mdadada", "bnenenenanean"};
-        List<String> movies = new ArrayList<>(Arrays.asList(data));
-        ArrayAdapter<String> moviesAdapter = new ArrayAdapter<>(getActivity(), R.layout.list_item_movies, R.id.list_item_movies_textview, movies);
+
+        moviesAdapter = new MoviesAdapter(getActivity(), eatFoodyImages);
+
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
         GridView gridView = (GridView) rootView.findViewById(R.id.gridview_movies);
@@ -73,13 +94,34 @@ public class MainActivityFragment extends Fragment {
         return rootView;
     }
 
-    public class FetchMoviesData extends AsyncTask<Void, Void, Void> {
+    public class FetchMoviesData extends AsyncTask<String, Void, String[]> {
 
         private final String LOG_TAG = FetchMoviesData.class.getSimpleName();
 
+        public String[] getMoviePostersFromJSON(String moviesJsonStr) throws JSONException {
+
+            final String TMD_RESULTS = "results";
+            final String TMD_POSTERS = "poster_path";
+
+
+            JSONObject moviesJson = new JSONObject(moviesJsonStr);
+            JSONArray resultsArray = moviesJson.getJSONArray(TMD_RESULTS);
+
+            String[] resultStr = new String[20];
+
+            for (int i = 0; i < resultsArray.length(); i++) {
+                JSONObject moviePoster = resultsArray.getJSONObject(i);
+
+                resultStr[i] = "http://image.tmdb.org/t/p/w185/" + moviePoster.getString(TMD_POSTERS);
+            }
+            for (String s : resultStr) {
+                Log.v(LOG_TAG, "Movies entry: " + s);
+            }
+            return resultStr;
+        }
 
         @Override
-        protected Void doInBackground(Void... params) {
+        protected String[] doInBackground(String... params) {
             // These two need to be declared outside the try/catch
             // so that they can be closed in the finally block.
             HttpURLConnection urlConnection = null;
@@ -157,8 +199,24 @@ public class MainActivityFragment extends Fragment {
                     }
                 }
             }
+            try {
+                return getMoviePostersFromJSON(moviesJsonStr);
+            } catch (JSONException e) {
+                Log.e(LOG_TAG, e.getMessage(), e);
+                e.printStackTrace();
+            }
 
             return null;
+        }
+
+        @Override
+        protected void onPostExecute(String[] result) {
+            if (result != null) {
+                moviesAdapter.clear();
+                for (String moviesString : result) {
+                    moviesAdapter.add(moviesString);
+                }
+            }
         }
     }
 }
