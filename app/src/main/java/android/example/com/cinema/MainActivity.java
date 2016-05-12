@@ -1,17 +1,20 @@
 package android.example.com.cinema;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    private final String LOG_TAG = MainActivity.class.getSimpleName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.i(LOG_TAG, "OnCreateeeeeeeeee");
         setContentView(R.layout.activity_main);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
@@ -20,6 +23,36 @@ public class MainActivity extends AppCompatActivity {
         }
             Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i(LOG_TAG, "OnStaphhhh");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.i(LOG_TAG, "OnDistroyyyy");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.i(LOG_TAG, "OnPAUSEE");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i(LOG_TAG, "OnRESUMEEEEE");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.i(LOG_TAG, "OnSTAAAAART");
     }
 
     @Override
@@ -38,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            startActivity(new Intent(this, SettingsActivity.class));
             return true;
         }
 
