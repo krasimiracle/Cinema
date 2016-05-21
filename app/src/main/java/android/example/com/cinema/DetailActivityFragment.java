@@ -7,7 +7,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -32,9 +35,14 @@ public class DetailActivityFragment extends Fragment {
         Intent intent = getActivity().getIntent();
         if (intent != null && intent.hasExtra(Intent.EXTRA_TEXT)) {
             String linkStr = intent.getStringExtra(Intent.EXTRA_TEXT);
-            ((TextView) rootView.findViewById(R.id.detail_text))
+            ((TextView) rootView.findViewById(R.id.movie_name))
                     .setText(linkStr);
+            ImageView imageView = (ImageView) rootView.findViewById(R.id.poster_detail_image);
+
+            Glide.with(this).load(linkStr).into(imageView);
         }
+
+
 
 
         return rootView;
