@@ -1,6 +1,7 @@
 package android.example.com.cinema;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -31,8 +32,9 @@ public class DetailActivityFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_detail, container, false);
 
+
         // The detail Activity called via intent.  Inspect the intent for data.
-        Intent intent = getActivity().getIntent();
+        final Intent intent = getActivity().getIntent();
         if (intent != null && intent.hasExtra(Intent.EXTRA_TEXT)) {
             String linkStr = intent.getStringExtra(Intent.EXTRA_TEXT);
             ((TextView) rootView.findViewById(R.id.movie_name))
@@ -40,9 +42,16 @@ public class DetailActivityFragment extends Fragment {
             ImageView imageView = (ImageView) rootView.findViewById(R.id.poster_detail_image);
 
             Glide.with(this).load(linkStr).into(imageView);
+            imageView.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    Intent trailerIntent = new Intent();
+                    trailerIntent.setAction(Intent.ACTION_VIEW);
+                    trailerIntent.addCategory(Intent.CATEGORY_BROWSABLE);
+                    trailerIntent.setData(Uri.parse("https://www.youtube.com/watch?v=MVIBXXMx7Lo"));
+                    startActivity(trailerIntent);
+                }
+            });
         }
-
-
 
 
         return rootView;
