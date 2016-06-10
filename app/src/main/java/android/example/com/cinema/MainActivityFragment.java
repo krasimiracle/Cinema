@@ -33,26 +33,26 @@ import java.util.ArrayList;
  */
 public class MainActivityFragment extends Fragment {
 
-   private MoviesAdapter moviesAdapter;
+    private MoviesAdapter moviesAdapter;
     public ArrayList<String> posterImages;
 
 
-   public static ArrayList<String> eatFoodyImages = new ArrayList<String>(){{
-          add("http://i.imgur.com/rFLNqWI.jpg");
-          add("http://i.imgur.com/C9pBVt7.jpg");
-          add("http://i.imgur.com/rT5vXE1.jpg");
-          add("http://i.imgur.com/aIy5R2k.jpg");
-          add("http://i.imgur.com/MoJs9pT.jpg");
-          add("http://i.imgur.com/S963yEM.jpg");
-          add("http://i.imgur.com/rLR2cyc.jpg");
-          add("http://i.imgur.com/SEPdUIx.jpg");
-          add("http://i.imgur.com/aC9OjaM.jpg");
-          add("http://i.imgur.com/76Jfv9b.jpg");
-          add("http://i.imgur.com/fUX7EIB.jpg");
-          add("http://i.imgur.com/syELajx.jpg");
-          add("http://i.imgur.com/COzBnru.jpg");
-          add("http://i.imgur.com/Z3QjilA.jpg");
-   }};
+    public static ArrayList<String> eatFoodyImages = new ArrayList<String>() {{
+        add("http://i.imgur.com/rFLNqWI.jpg");
+        add("http://i.imgur.com/C9pBVt7.jpg");
+        add("http://i.imgur.com/rT5vXE1.jpg");
+        add("http://i.imgur.com/aIy5R2k.jpg");
+        add("http://i.imgur.com/MoJs9pT.jpg");
+        add("http://i.imgur.com/S963yEM.jpg");
+        add("http://i.imgur.com/rLR2cyc.jpg");
+        add("http://i.imgur.com/SEPdUIx.jpg");
+        add("http://i.imgur.com/aC9OjaM.jpg");
+        add("http://i.imgur.com/76Jfv9b.jpg");
+        add("http://i.imgur.com/fUX7EIB.jpg");
+        add("http://i.imgur.com/syELajx.jpg");
+        add("http://i.imgur.com/COzBnru.jpg");
+        add("http://i.imgur.com/Z3QjilA.jpg");
+    }};
 
     public MainActivityFragment() {
     }
@@ -85,6 +85,7 @@ public class MainActivityFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+
         moviesAdapter = new MoviesAdapter(getActivity(), eatFoodyImages);
 
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
@@ -100,6 +101,9 @@ public class MainActivityFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        FetchMoviesData moviesData = new FetchMoviesData();
+        moviesData.execute();
 
         return rootView;
     }
@@ -121,9 +125,9 @@ public class MainActivityFragment extends Fragment {
 
             for (int i = 0; i < resultsArray.length(); i++) {
                 JSONObject moviePoster = resultsArray.getJSONObject(i);
-
                 resultStr[i] = "http://image.tmdb.org/t/p/w185/" + moviePoster.getString(TMD_POSTERS);
             }
+
             for (String s : resultStr) {
                 Log.v(LOG_TAG, "Movies entry: " + s);
             }

@@ -20,6 +20,7 @@ public class MoviesAdapter extends ArrayAdapter {
     private LayoutInflater inflater;
 
     private ArrayList<String> imageUrls;
+    private ArrayList<String> movieTitles;
 
     @Override
     public void clear() {
@@ -29,10 +30,8 @@ public class MoviesAdapter extends ArrayAdapter {
 
     public MoviesAdapter(Context context, ArrayList<String> imageUrls) {
         super(context, R.layout.list_item_movie_posters, imageUrls);
-
         this.context = context;
         this.imageUrls = imageUrls;
-
         inflater = LayoutInflater.from(context);
     }
 
