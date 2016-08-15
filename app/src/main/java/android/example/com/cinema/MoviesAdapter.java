@@ -51,5 +51,4 @@ public class MoviesAdapter extends ArrayAdapter {
 
         return convertView;
     }
-
 }
