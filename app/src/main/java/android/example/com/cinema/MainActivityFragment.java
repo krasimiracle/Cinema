@@ -27,6 +27,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -35,24 +36,7 @@ public class MainActivityFragment extends Fragment {
 
     private MoviesAdapter moviesAdapter;
     public ArrayList<String> posterImages;
-
-
-    public static ArrayList<String> eatFoodyImages = new ArrayList<String>() {{
-        add("http://i.imgur.com/rFLNqWI.jpg");
-        add("http://i.imgur.com/C9pBVt7.jpg");
-        add("http://i.imgur.com/rT5vXE1.jpg");
-        add("http://i.imgur.com/aIy5R2k.jpg");
-        add("http://i.imgur.com/MoJs9pT.jpg");
-        add("http://i.imgur.com/S963yEM.jpg");
-        add("http://i.imgur.com/rLR2cyc.jpg");
-        add("http://i.imgur.com/SEPdUIx.jpg");
-        add("http://i.imgur.com/aC9OjaM.jpg");
-        add("http://i.imgur.com/76Jfv9b.jpg");
-        add("http://i.imgur.com/fUX7EIB.jpg");
-        add("http://i.imgur.com/syELajx.jpg");
-        add("http://i.imgur.com/COzBnru.jpg");
-        add("http://i.imgur.com/Z3QjilA.jpg");
-    }};
+    String[] resultStr = new String[20];
 
     public MainActivityFragment() {
     }
@@ -85,14 +69,14 @@ public class MainActivityFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
-        moviesAdapter = new MoviesAdapter(getActivity(), eatFoodyImages);
+        moviesAdapter = new MoviesAdapter(getActivity(), new ArrayList<String>(Arrays.asList(resultStr)));
 
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
         GridView gridView = (GridView) rootView.findViewById(R.id.gridview_movies);
 
         gridView.setAdapter(moviesAdapter);
+
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -116,12 +100,9 @@ public class MainActivityFragment extends Fragment {
 
             final String TMD_RESULTS = "results";
             final String TMD_POSTERS = "poster_path";
-
-
+            
             JSONObject moviesJson = new JSONObject(moviesJsonStr);
             JSONArray resultsArray = moviesJson.getJSONArray(TMD_RESULTS);
-
-            String[] resultStr = new String[20];
 
             for (int i = 0; i < resultsArray.length(); i++) {
                 JSONObject moviePoster = resultsArray.getJSONObject(i);
