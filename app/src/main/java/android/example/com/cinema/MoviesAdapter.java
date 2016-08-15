@@ -40,7 +40,6 @@ public class MoviesAdapter extends ArrayAdapter {
         if (null == convertView) {
             convertView = inflater.inflate(R.layout.list_item_movie_posters, parent, false);
         }
-
         Glide
                 .with(context)
                 .load(imageUrls.get(position))
