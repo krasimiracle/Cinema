@@ -1,25 +1,30 @@
 # CinemaCheck
 
-Android app for checking trending movies.
+ This is a self updating app that displays trending movies.
 
 ## Features
-*Discover trending movies
+
+ With this app you can:
+  * Discover trending movies
+ 
 
 ## How to build this project in Android Studio
 
-This app uses [The Movie Database](https://www.themoviedb.org/documentation/api) API to fetch JSON data of the movies.
-You need to acquire your own API key to run this project.
-To run the app paste your API key to:
+ This app uses [The Movie Database](https://www.themoviedb.org/documentation/api) API to fetch JSON data of the movies.
+ You need to acquire your own API key to run this project.
+ To run the app paste your API key to:
 	```
     build.gradle(Module: app)
     ```
 
 ## Sample screenshots
 
+![screen](../master/screenshots/main_activity_screenshot.png)
+
+
 ## Libraries used
 
-* [Retrofit](https://github.com/square/retrofit)
-* [Glide](https://github.com/bumptech/glide)
+ * [Glide](https://github.com/bumptech/glide)
 
 ## License
 		

@@ -19,7 +19,7 @@ android {
     }
     //YOU NEED AN API KEY TO RUN THIS BUILD
     buildTypes.each {
-        it.buildConfigField 'String', 'THE_MOVIE_DB_API_KEY', "\"\""
+        it.buildConfigField 'String', 'THE_MOVIE_DB_API_KEY', "\"b95e662350dbab4ff00e440b69b7c8aa\""
     }
 }
 
@@ -32,4 +32,5 @@ dependencies {
     compile 'com.android.support:support-v4:23.4.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha1'
     compile 'com.android.support:recyclerview-v7:23.4.0'
+    compile 'com.squareup.retrofit2:retrofit:2.0.2'
 }
