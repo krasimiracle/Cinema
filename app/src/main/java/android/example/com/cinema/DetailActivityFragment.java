@@ -29,13 +29,13 @@ public class DetailActivityFragment extends Fragment {
     // TODO: 07-Jun-16 Change dummy youtube link with trailer's link
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater,
+                             ViewGroup container,
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_detail, container, false);
         ImageView posterImage = (ImageView) rootView.findViewById(R.id.poster_image);
         ImageView backgroundImage = (ImageView) rootView.findViewById(R.id.background_image);
-
 
         // The detail Activity called via intent.  Inspect the intent for data.
         final Intent intent = getActivity().getIntent();
@@ -43,11 +43,9 @@ public class DetailActivityFragment extends Fragment {
         if (intent != null && intent.hasExtra(Intent.EXTRA_TEXT)) {
 
             // Load image string from intent. Used for poster image.
-
             String linkStr = intent.getStringExtra(Intent.EXTRA_TEXT);
 
             // Load poster image
-
             Glide
                     .with(getContext())
                     .load(linkStr)
@@ -57,7 +55,6 @@ public class DetailActivityFragment extends Fragment {
                     .into(posterImage);
 
             // Load background image
-
             Glide
                     .with(this)
                     .load(linkStr)
@@ -74,7 +71,6 @@ public class DetailActivityFragment extends Fragment {
                 }
             });
         }
-
 
         return rootView;
     }

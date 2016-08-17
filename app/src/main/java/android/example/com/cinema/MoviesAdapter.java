@@ -27,7 +27,6 @@ public class MoviesAdapter extends ArrayAdapter {
         super.clear();
     }
 
-
     public MoviesAdapter(Context context, ArrayList<String> imageUrls) {
         super(context, R.layout.list_item_movie_posters, imageUrls);
         this.context = context;
@@ -40,7 +39,6 @@ public class MoviesAdapter extends ArrayAdapter {
         if (null == convertView) {
             convertView = inflater.inflate(R.layout.list_item_movie_posters, parent, false);
         }
-
         Glide
                 .with(context)
                 .load(imageUrls.get(position))
