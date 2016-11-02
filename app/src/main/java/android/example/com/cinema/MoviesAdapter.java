@@ -1,6 +1,7 @@
 package android.example.com.cinema;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,15 +28,16 @@ public class MoviesAdapter extends ArrayAdapter {
         super.clear();
     }
 
-    public MoviesAdapter(Context context, ArrayList<String> imageUrls) {
+    MoviesAdapter(Context context, ArrayList<String> imageUrls) {
         super(context, R.layout.list_item_movie_posters, imageUrls);
         this.context = context;
         this.imageUrls = imageUrls;
         inflater = LayoutInflater.from(context);
     }
 
+    @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         if (null == convertView) {
             convertView = inflater.inflate(R.layout.list_item_movie_posters, parent, false);
         }
