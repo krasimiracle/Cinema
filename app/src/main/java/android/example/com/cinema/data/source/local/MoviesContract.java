@@ -1,4 +1,4 @@
-package android.example.com.cinema.data;
+package android.example.com.cinema.data.source.local;
 
 import android.net.Uri;
 
