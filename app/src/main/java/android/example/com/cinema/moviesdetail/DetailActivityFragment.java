@@ -1,7 +1,8 @@
-package android.example.com.cinema;
+package android.example.com.cinema.moviesdetail;
 
 import android.content.ComponentName;
 import android.content.Intent;
+import android.example.com.cinema.R;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;

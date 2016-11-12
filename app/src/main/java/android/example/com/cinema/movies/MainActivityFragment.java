@@ -1,6 +1,9 @@
-package android.example.com.cinema;
+package android.example.com.cinema.movies;
 
 import android.content.Intent;
+import android.example.com.cinema.BuildConfig;
+import android.example.com.cinema.R;
+import android.example.com.cinema.moviesdetail.DetailActivity;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;

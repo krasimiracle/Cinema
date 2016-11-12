@@ -1,6 +1,7 @@
-package android.example.com.cinema;
+package android.example.com.cinema.movies;
 
 import android.content.Context;
+import android.example.com.cinema.R;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;

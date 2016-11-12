@@ -1,4 +1,4 @@
-package android.example.com.cinema;
+package android.example.com.cinema.settings;
 
 import android.content.res.Configuration;
 import android.os.Bundle;

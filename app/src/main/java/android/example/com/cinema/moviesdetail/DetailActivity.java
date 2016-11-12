@@ -1,6 +1,8 @@
-package android.example.com.cinema;
+package android.example.com.cinema.moviesdetail;
 
 import android.content.Intent;
+import android.example.com.cinema.R;
+import android.example.com.cinema.settings.SettingsActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;

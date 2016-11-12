@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="android.example.com.cinema.DetailActivity">
+    tools:context="android.example.com.cinema.moviesdetail.DetailActivity">
 
 
 </android.support.design.widget.CoordinatorLayout>
