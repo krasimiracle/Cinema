@@ -24,7 +24,6 @@ public interface MoviesContract {
         void showMovies(List<Movie> movies);
 
         void showMovieDetailsUI(String movieID);
-        
     }
 
     interface Presenter extends BasePresenter {
