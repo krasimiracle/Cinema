@@ -35,13 +35,13 @@ import java.util.Arrays;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class MainActivityFragment extends Fragment {
+public class MoviesFragment extends Fragment {
 
     private MoviesAdapter moviesAdapter;
     public ArrayList<String> posterImages;
     private String[] resultStr = new String[20];
 
-    public MainActivityFragment() {
+    public MoviesFragment() {
     }
 
     @Override

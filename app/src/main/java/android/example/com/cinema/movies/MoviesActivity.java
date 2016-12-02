@@ -9,7 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity {
+public class MoviesActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new MainActivityFragment())
+                    .add(R.id.container, new MoviesFragment())
                     .commit();
         }
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -37,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
         // automatically handle clicks of the Home/Up button, as long
         // as you specify a parent activity in the AndroidManifest.xml.
         switch (item.getItemId()) {
+            // Open Settings menu
             case R.id.action_settings:
-                // Open Settings menu
                 startActivity(new Intent(this, SettingsActivity.class));
                 return true;
         }
