@@ -14,6 +14,8 @@ import android.support.annotation.NonNull;
  */
 public class MoviePresenter implements MoviesContract.Presenter {
 
+
+
     public MoviePresenter() {
     }
 

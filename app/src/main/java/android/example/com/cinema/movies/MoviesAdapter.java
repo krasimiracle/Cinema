@@ -49,7 +49,6 @@ public class MoviesAdapter extends ArrayAdapter {
                 .placeholder(R.mipmap.ic_launcher)
                 .crossFade()
                 .into((ImageView) convertView);
-
         return convertView;
     }
 }
