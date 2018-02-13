@@ -20,6 +20,7 @@
         android:horizontalSpacing="5dp"
         android:stretchMode="columnWidth"
         android:gravity="center"
+        tools:listitem="@layout/movie_item"
         />
 
 </FrameLayout>

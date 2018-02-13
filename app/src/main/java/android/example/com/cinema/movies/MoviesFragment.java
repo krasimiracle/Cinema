@@ -3,6 +3,7 @@ package android.example.com.cinema.movies;
 import android.content.Intent;
 import android.example.com.cinema.BuildConfig;
 import android.example.com.cinema.R;
+import android.example.com.cinema.data.Movie;
 import android.example.com.cinema.moviesdetail.DetailActivity;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -31,11 +32,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * A placeholder fragment containing a simple view.
  */
-public class MoviesFragment extends Fragment {
+public class MoviesFragment extends Fragment implements MoviesContract.View{
 
     private MoviesAdapter moviesAdapter;
     public ArrayList<String> posterImages;
@@ -90,6 +92,26 @@ public class MoviesFragment extends Fragment {
         moviesData.execute();
 
         return rootView;
+    }
+
+    @Override
+    public void setLoadingIndicator(boolean active) {
+
+    }
+
+    @Override
+    public void showMovies(List<Movie> movies) {
+
+    }
+
+    @Override
+    public void showMovieDetailsUI(String movieID) {
+
+    }
+
+    @Override
+    public void setPresenter(MoviesContract.Presenter presenter) {
+
     }
 
     public class FetchMoviesData extends AsyncTask<String, Void, String[]> {
