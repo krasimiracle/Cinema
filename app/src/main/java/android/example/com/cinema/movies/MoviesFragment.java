@@ -44,6 +44,7 @@ public class MoviesFragment extends Fragment implements MoviesContract.View{
     private String[] resultStr = new String[20];
 
     public MoviesFragment() {
+        // Requires empty public constructor
     }
 
     @Override
@@ -116,7 +117,7 @@ public class MoviesFragment extends Fragment implements MoviesContract.View{
 
     public class FetchMoviesData extends AsyncTask<String, Void, String[]> {
 
-        public String[] getMoviePostersFromJSON(String moviesJsonStr) throws JSONException {
+        String[] getMoviePostersFromJSON(String moviesJsonStr) throws JSONException {
             final String TMD_RESULTS = "results";
             final String TMD_POSTERS = "poster_path";
 

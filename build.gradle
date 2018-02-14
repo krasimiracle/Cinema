@@ -39,4 +39,5 @@ ext {
     firebaseVersion = '11.8.0'
     retrofit2Version = '2.3.0'
     glideVersion = '4.0.0'
+    junitVersion = '4.12'
 }

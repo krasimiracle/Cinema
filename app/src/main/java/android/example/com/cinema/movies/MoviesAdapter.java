@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 
@@ -45,9 +46,9 @@ public class MoviesAdapter extends ArrayAdapter {
         Glide
                 .with(context)
                 .load(imageUrls.get(position))
+                .apply(new RequestOptions()
                 .centerCrop()
-                .placeholder(R.mipmap.ic_launcher)
-                .crossFade()
+                .placeholder(R.mipmap.ic_launcher))
                 .into((ImageView) convertView);
         return convertView;
     }
