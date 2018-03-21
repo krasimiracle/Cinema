@@ -37,7 +37,7 @@ import java.util.List;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class MoviesFragment extends Fragment implements MoviesContract.View{
+public class MoviesFragment extends Fragment implements MoviesContract.View {
 
     private MoviesAdapter moviesAdapter;
     public ArrayList<String> posterImages;

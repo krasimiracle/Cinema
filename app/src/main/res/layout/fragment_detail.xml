@@ -1,94 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:layout_editor_absoluteX="0dp"
-    tools:layout_editor_absoluteY="0dp"
-    android:id="@+id/constraintLayout">
+    tools:layout_editor_absoluteY="0dp">
 
-        <ImageView
-            android:layout_width="424dp"
-            android:layout_height="155dp"
-            android:id="@+id/background_image"
-            android:src="@drawable/test_image"
-            android:scaleType="centerCrop"
-            android:contentDescription="@string/trailer_link_image"
-            app:layout_constraintLeft_toLeftOf="@+id/constraintLayout"
-            app:layout_constraintTop_toTopOf="@+id/constraintLayout"
-            app:layout_constraintRight_toRightOf="@+id/constraintLayout"
-            app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
-            android:layout_marginBottom="16dp"
-            app:layout_constraintHorizontal_bias="0.46"
-            app:layout_constraintVertical_bias="0.0" />
+    <ImageView
+        android:id="@+id/background_image"
+        android:layout_width="424dp"
+        android:layout_height="155dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="@string/trailer_link_image"
+        android:scaleType="centerCrop"
+        android:src="@drawable/test_image"
+        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintHorizontal_bias="0.46"
+        app:layout_constraintLeft_toLeftOf="@+id/constraintLayout"
+        app:layout_constraintRight_toRightOf="@+id/constraintLayout"
+        app:layout_constraintTop_toTopOf="@+id/constraintLayout"
+        app:layout_constraintVertical_bias="0.0" />
 
-        <TextView
-            android:id="@+id/movie_title"
-            android:layout_width="108dp"
-            android:layout_height="27dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            app:layout_constraintLeft_toLeftOf="@+id/constraintLayout"
-            android:layout_marginLeft="24dp"
-            android:layout_marginStart="24dp"
-            app:layout_constraintTop_toBottomOf="@+id/poster_image"
-            android:layout_marginTop="8dp"
-            app:layout_constraintRight_toRightOf="@+id/poster_image"
-            tools:text="Interstellar" />
+    <TextView
+        android:id="@+id/movie_title"
+        android:layout_width="108dp"
+        android:layout_height="27dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintLeft_toLeftOf="@+id/constraintLayout"
+        app:layout_constraintRight_toRightOf="@+id/poster_image"
+        app:layout_constraintTop_toBottomOf="@+id/poster_image"
+        tools:text="Interstellar" />
 
-        <ImageView
-            android:src="@drawable/poster_image"
-            android:layout_width="108dp"
-            android:layout_height="145dp"
-            android:id="@+id/poster_image"
-            android:scaleType="centerInside"
-            app:layout_constraintLeft_toLeftOf="@+id/constraintLayout"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp"
-            app:layout_constraintTop_toTopOf="@+id/constraintLayout"
-            android:layout_marginTop="100dp"
-            app:layout_constraintBottom_toBottomOf="@+id/background_image"
-            app:layout_constraintVertical_bias="0.19" />
+    <ImageView
+        android:id="@+id/poster_image"
+        android:layout_width="108dp"
+        android:layout_height="145dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="100dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/poster_image"
+        app:layout_constraintBottom_toBottomOf="@+id/background_image"
+        app:layout_constraintLeft_toLeftOf="@+id/constraintLayout"
+        app:layout_constraintTop_toTopOf="@+id/constraintLayout"
+        app:layout_constraintVertical_bias="0.19" />
 
-        <TextView
-            android:text="Rating: "
-            android:layout_width="73dp"
-            android:layout_height="27dp"
-            android:id="@+id/ratingTextView"
-            app:layout_constraintLeft_toRightOf="@+id/movie_title"
-            android:layout_marginLeft="80dp"
-            android:layout_marginStart="80dp"
-            app:layout_constraintTop_toBottomOf="@+id/background_image"
-            android:layout_marginTop="56dp" />
+    <TextView
+        android:id="@+id/ratingTextView"
+        android:layout_width="73dp"
+        android:layout_height="27dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="56dp"
+        android:text="Rating: "
+        app:layout_constraintLeft_toRightOf="@+id/movie_title"
+        app:layout_constraintTop_toBottomOf="@+id/background_image" />
 
-        <TextView
-            android:text="8.7"
-            android:layout_width="56dp"
-            android:layout_height="24dp"
-            android:id="@+id/textView2"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            app:layout_constraintLeft_toRightOf="@+id/ratingTextView"
-            android:layout_marginLeft="24dp"
-            android:layout_marginStart="24dp"
-            app:layout_constraintTop_toTopOf="@+id/ratingTextView"
-            app:layout_constraintBottom_toBottomOf="@+id/ratingTextView" />
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="56dp"
+        android:layout_height="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:text="8.7"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        app:layout_constraintBottom_toBottomOf="@+id/ratingTextView"
+        app:layout_constraintLeft_toRightOf="@+id/ratingTextView"
+        app:layout_constraintTop_toTopOf="@+id/ratingTextView" />
 
-        <TextView
-            android:text="Description: "
-            android:layout_width="387dp"
-            android:layout_height="276dp"
-            android:id="@+id/description"
-            tools:text="In the animal city of Zootopia, a fast-talking fox who's trying to make it big goes on the run when he's framed for a crime he didn't commit. Zootopia's top cop, a self-righteous rabbit, is hot on his tail, but when both become targets of a conspiracy, they're forced to team up and discover even natural enemies can become best friends."
-            app:layout_constraintLeft_toLeftOf="@+id/constraintLayout"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/movie_title"
-            android:layout_marginTop="8dp"
-            app:layout_constraintRight_toRightOf="@+id/constraintLayout"
-            android:layout_marginRight="16dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
-            android:layout_marginBottom="16dp" />
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="387dp"
+        android:layout_height="276dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="Description: "
+        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintLeft_toLeftOf="@+id/constraintLayout"
+        app:layout_constraintRight_toRightOf="@+id/constraintLayout"
+        app:layout_constraintTop_toBottomOf="@+id/movie_title"
+        tools:text="In the animal city of Zootopia, a fast-talking fox who's trying to make it big goes on the run when he's framed for a crime he didn't commit. Zootopia's top cop, a self-righteous rabbit, is hot on his tail, but when both become targets of a conspiracy, they're forced to team up and discover even natural enemies can become best friends." />
 
 </android.support.constraint.ConstraintLayout>

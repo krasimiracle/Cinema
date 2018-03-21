@@ -37,6 +37,7 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofit2Version"
     implementation "com.google.firebase:firebase-auth:$rootProject.firebaseVersion"
+    implementation "android.arch.persistence.room:runtime:$rootProject.roomVersion"
 
     // Test dependencies
     testImplementation "junit:junit:$rootProject.ext.junitVersion"
