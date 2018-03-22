@@ -6,4 +6,7 @@
 
     <!-- Common -->
     <dimen name="item_spacing">4dp</dimen>
+    <dimen name="material_keylines">16dp</dimen>
+    <dimen name="card_height">241dp</dimen>
+    <dimen name="card_button_dimen">36dp</dimen>
 </resources>

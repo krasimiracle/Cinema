@@ -6,6 +6,7 @@ android {
 
     defaultConfig {
         applicationId "android.example.com.cinema"
+        vectorDrawables.useSupportLibrary = true
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

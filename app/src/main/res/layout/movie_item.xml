@@ -4,52 +4,63 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/movie_item_cardview"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="@dimen/item_spacing"
-    android:orientation="vertical"
-    app:cardCornerRadius="4dp"
-    app:cardElevation="4dp">
+    android:layout_height="@dimen/card_height"
+    android:layout_gravity="center"
+    android:layout_marginBottom="@dimen/material_keylines"
+    android:layout_marginLeft="@dimen/material_keylines"
+    android:layout_marginRight="@dimen/material_keylines"
+    android:foreground="?attr/selectableItemBackground"
+    app:cardCornerRadius="4dp">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:orientation="vertical">
+        android:background="@color/colorPrimary">
 
         <ImageView
             android:id="@+id/movie_item_poster_image"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="185dp"
+            android:contentDescription="@string/poster_image"
             android:scaleType="centerCrop"
-            tools:layout_width="300dp"
             tools:src="@drawable/sample_poster" />
 
-        <LinearLayout
-            android:id="@+id/movies_footer"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/movie_title"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/movie_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                tools:text="Fantastic Beasts" />
-
-        </LinearLayout>
+            android:layout_below="@id/movie_item_poster_image"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:text="Fantastic Beasts" />
 
         <TextView
             android:id="@+id/movie_genre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
+            android:layout_below="@id/movie_title"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
             android:textSize="14sp"
             tools:text="Fantasy, Action" />
 
-    </LinearLayout>
-
+        <ImageButton
+            android:id="@+id/save_button"
+            style="?attr/borderlessButtonStyle"
+            android:layout_width="@dimen/card_button_dimen"
+            android:layout_height="@dimen/card_button_dimen"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/movie_item_poster_image"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="4dp"
+            android:tint="@color/medium_grey"
+            app:srcCompat="@drawable/ic_save_black_24dp"
+            android:contentDescription="@string/save_button" />
+    </RelativeLayout>
 </android.support.v7.widget.CardView>
